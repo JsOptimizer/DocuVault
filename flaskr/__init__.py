@@ -18,6 +18,6 @@ def create_app(test_config=None):
 
     @app.route("/hello")
     def hello():
-        return 'hello world'
+        return 'hello world mike'
 
     return app
