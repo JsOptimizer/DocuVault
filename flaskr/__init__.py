@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 from .extension.core import db
+from .models import user, document
 
 
 def create_app(test_config=None):
