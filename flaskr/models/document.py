@@ -1,7 +1,6 @@
 from flaskr.extension.core import db
-from typing import List, Optional
 from sqlalchemy import ForeignKey, String, Text
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.orm import Mapped, mapped_column
 
 
 class Document(db.Model):
