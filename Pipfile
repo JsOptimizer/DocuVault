@@ -9,6 +9,7 @@ python-dotenv = "*"
 psycopg2-binary = "*"
 flask-sqlalchemy = "*"
 sqlalchemy = "*"
+ruff = "*"
 
 [dev-packages]
 
