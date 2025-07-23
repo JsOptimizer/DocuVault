@@ -1,3 +1,8 @@
 {
-  "cSpell.words": ["adminer", "flaskr", "pyfile"]
+  "cSpell.words": [
+    "adminer",
+    "flaskr",
+    "jsonify",
+    "pyfile"
+  ]
 }

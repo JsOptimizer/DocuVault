@@ -1,4 +1,4 @@
-from flask import Blueprint, Response, current_app, g
+from flask import Blueprint, Response, current_app, g, jsonify
 
 bp = Blueprint("auth", __name__, url_prefix="/auth")
 
@@ -19,6 +19,12 @@ def register():
     """
     data = {"name": "pau", "age": 43}
     return (
-        {"status": "success", "message": "User registered successfully.", "data": data},
+        jsonify(
+            {
+                "status": "success",
+                "message": "User registered successfully.",
+                "data": data,
+            }
+        ),
         200,
     )
