@@ -17,6 +17,7 @@ def register():
               status: "success"
               message: "User registered successfully."
     """
+
     data = {"name": "pau", "age": 43}
     return (
         jsonify(

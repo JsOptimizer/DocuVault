@@ -59,27 +59,50 @@ DocuVault is a robust backend system designed to securely manage, organize, and 
 
 ---
 
-## 🏗️ Technical Requirements
+## 🏗️ System Architecture
 
-- **Backend:** Flask (Blueprints, Flask-JWT-Extended, Marshmallow, SQLAlchemy)
-- **Database:** PostgreSQL or MySQL (PostgreSQL recommended)
-- **File Storage:** Local (dev), AWS S3-ready (prod)
-- **Authentication:** JWT with refresh token
-- **Validation/Serialization:** Marshmallow
-- **Migrations:** Alembic
-- **API Docs:** Swagger/OpenAPI (flasgger or apispec)
-- **Testing:** pytest or unittest
-- **Config:** `.env` for environment variables
-- **Containerization:** Docker & Docker Compose
-
----
-
-## 🏛️ System Architecture
-
-- Modular Flask app (Blueprints)
+- Modular Flask app (see `flaskr/` directory)
 - RESTful API endpoints
 - Configurable via environment variables
 - Dockerfile & Compose for local/dev/prod
+
+---
+
+## 📁 Project Structure
+
+```
+duc_velo_backenc/
+├── compose.yaml
+├── Dockerfile
+├── flaskr/
+│   ├── __init__.py
+│   ├── extension/
+│   │   ├── __init__.py
+│   │   └── core.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── document.py
+│   │   └── user.py
+│   ├── repositories/
+│   │   └── __init__.py
+│   ├── routes/
+│   │   ├── __init__.py
+│   │   └── auth.py
+│   ├── schema/
+│   │   └── __init__.py
+│   ├── services/
+│   │   └── __init__.py
+│   └── utils/
+│       └── __init__.py
+├── instance/
+├── Pipfile
+├── Pipfile.lock
+├── pyproject.toml
+├── README.Docker.md
+├── README.md
+└── requirements.txt
+```
 
 ---
 
@@ -102,6 +125,9 @@ POSTGRES_USER=youruser
 POSTGRES_PASSWORD=yourpassword
 POSTGRES_DB=docuvault
 ```
+
+- The `instance/` folder is used for instance-specific configuration (e.g., `config.py`).
+- For Docker, environment variables can be set in the `compose.yaml` file.
 
 ### 3. Local Development (without Docker)
 
@@ -154,11 +180,11 @@ docker compose up --build
 
 ## 📝 Development Notes
 
-- Modularize features using Flask Blueprints
+- Modularize features using Flask Blueprints (see `flaskr/routes/`)
 - Use Marshmallow for request/response validation
 - Use Alembic for DB migrations
 - Store files locally in dev, S3 in production
-- All config via `.env` or `config.py`
+- All config via `.env` or `instance/config.py`
 
 ---
 
