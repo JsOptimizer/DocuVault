@@ -1,14 +1,17 @@
 import os
+
 from flask import Flask
+
 from .extension.core import db
-from .models import user, document
+from .models import document, user
+from .routes import auth
 
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
 
     if test_config is None:
-        app.config.from_pyfile('config.py', silent=True)
+        app.config.from_pyfile("config.py", silent=True)
         pass
     else:
         app.config.from_mapping(test_config)
@@ -20,8 +23,10 @@ def create_app(test_config=None):
 
     db.init_app(app)
 
+    app.register_blueprint(auth.bp)
+
     @app.route("/hello")
     def hello():
-        return 'hello world mike'
+        return "hello world mike"
 
     return app

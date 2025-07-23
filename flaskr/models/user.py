@@ -3,7 +3,7 @@ import datetime
 from sqlalchemy import TIMESTAMP
 from sqlalchemy.orm import Mapped, mapped_column
 
-from .extension.core import db
+from flaskr.extension.core import db
 
 
 class User(db.Model):

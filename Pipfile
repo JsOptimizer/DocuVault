@@ -10,6 +10,7 @@ psycopg2-binary = "*"
 flask-sqlalchemy = "*"
 sqlalchemy = "*"
 ruff = "*"
+werkzeug = "*"
 
 [dev-packages]
 
