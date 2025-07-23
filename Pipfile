@@ -12,6 +12,7 @@ sqlalchemy = "*"
 ruff = "*"
 werkzeug = "*"
 flask-jwt-extended = "*"
+marshmallow = "*"
 
 [dev-packages]
 

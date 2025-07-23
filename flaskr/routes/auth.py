@@ -1,4 +1,4 @@
-from flask import Blueprint, Response, current_app, g, jsonify
+from flask import Blueprint, jsonify
 
 bp = Blueprint("auth", __name__, url_prefix="/auth")
 
