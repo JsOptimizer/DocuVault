@@ -1,3 +1,0 @@
-[tool.ruff]
-lint.extend-select=["ALL"]
-lint.ignore=[]
