@@ -1,4 +1,11 @@
-from flask import Blueprint, jsonify
+import datetime
+from pprint import pprint
+
+from flask import Blueprint, jsonify, request
+from werkzeug.security import generate_password_hash
+
+from flaskr.extension.core import db
+from flaskr.models.user import User
 
 bp = Blueprint("auth", __name__, url_prefix="/auth")
 
@@ -17,14 +24,28 @@ def register():
               status: "success"
               message: "User registered successfully."
     """
+    data = request.get_json()
+    print(f"entry data {data}")
 
-    data = {"name": "pau", "age": 43}
+    user = User(
+        username=data["username"],
+        email=data["email"],
+        password_hash=generate_password_hash(data["password"]),
+    )
+    db.session.add(user)
+    db.session.commit()
+
+    pprint(data)
     return (
         jsonify(
             {
                 "status": "success",
                 "message": "User registered successfully.",
-                "data": data,
+                "data": {
+                    "username": data["username"],
+                    "email": data["email"],
+                    "password": generate_password_hash(data["password"]),
+                },
             }
         ),
         200,
