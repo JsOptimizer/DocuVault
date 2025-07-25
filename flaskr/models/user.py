@@ -9,10 +9,10 @@ from flaskr.extension.core import db
 
 
 class User(db.Model):
-    id = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    id: Mapped[str] = mapped_column(
+        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+    )
     username: Mapped[str] = mapped_column(nullable=False)
     email: Mapped[str]
     password_hash: Mapped[str]
-    create_at: Mapped[datetime.datetime] = mapped_column(
-        default=datetime.datetime.now(datetime.timezone.utc)
-    )
+    create_at: Mapped[datetime.datetime] = mapped_column(default=datetime.datetime.now)
